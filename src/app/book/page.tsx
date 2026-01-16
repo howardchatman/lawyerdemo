@@ -14,8 +14,13 @@ import {
   Users,
   ArrowRight,
   Star,
+  Bot,
+  PhoneCall,
 } from 'lucide-react';
 import { createClientComponentClient } from '@/lib/supabase';
+import AIVAChat from '@/components/AIVAChat';
+
+const RETELL_PHONE = '713-999-2094';
 
 const practiceAreas = [
   'Corporate Law',
@@ -123,10 +128,10 @@ export default function BookingPage() {
                 Return to Homepage
               </Link>
               <a
-                href="tel:1-800-CHATMAN"
+                href={`tel:${RETELL_PHONE}`}
                 className="block w-full border border-gray-200 hover:border-[#c9a961] py-3 font-semibold text-gray-700 hover:text-[#c9a961] transition-colors"
               >
-                Call Us: 1-800-CHATMAN
+                Call AIVA: {RETELL_PHONE}
               </a>
             </div>
           </div>
@@ -148,11 +153,11 @@ export default function BookingPage() {
             </div>
           </Link>
           <a
-            href="tel:1-800-CHATMAN"
+            href={`tel:${RETELL_PHONE}`}
             className="hidden md:flex items-center gap-2 text-white hover:text-[#c9a961] transition-colors"
           >
-            <Phone size={18} />
-            <span className="font-medium">1-800-CHATMAN</span>
+            <PhoneCall size={18} />
+            <span className="font-medium">{RETELL_PHONE}</span>
           </a>
         </div>
       </header>
@@ -218,8 +223,29 @@ export default function BookingPage() {
               </div>
             </div>
 
+            {/* Talk to AIVA */}
+            <div className="mt-8 p-6 bg-gradient-to-r from-[#c9a961] to-[#d4b76a]">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                  <Bot size={24} className="text-[#c9a961]" />
+                </div>
+                <div>
+                  <p className="font-bold text-black">Prefer to Talk?</p>
+                  <p className="text-sm text-black/70">Speak with our AI assistant</p>
+                </div>
+              </div>
+              <a
+                href={`tel:${RETELL_PHONE}`}
+                className="flex items-center justify-center gap-2 bg-black text-white py-3 font-bold hover:bg-white hover:text-black transition-colors"
+              >
+                <PhoneCall size={20} />
+                Call {RETELL_PHONE}
+              </a>
+              <p className="text-xs text-black/60 text-center mt-2">Available 24/7</p>
+            </div>
+
             {/* Testimonial */}
-            <div className="mt-8 p-6 bg-white border border-gray-200">
+            <div className="mt-6 p-6 bg-white border border-gray-200">
               <div className="flex gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={16} className="fill-[#c9a961] text-[#c9a961]" />
@@ -384,6 +410,9 @@ export default function BookingPage() {
           </p>
         </div>
       </footer>
+
+      {/* AIVA Chat Widget */}
+      <AIVAChat />
     </div>
   );
 }

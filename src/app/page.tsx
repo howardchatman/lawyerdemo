@@ -10,6 +10,7 @@ import Testimonials from '@/components/Testimonials';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 import LeadCapture from '@/components/LeadCapture';
+import AIVAChat from '@/components/AIVAChat';
 
 export default function Home() {
   return (
@@ -26,6 +27,9 @@ export default function Home() {
 
       {/* Lead Capture Popup - appears after 5 seconds */}
       <LeadCapture delay={5000} />
+
+      {/* AIVA AI Chat Widget */}
+      <AIVAChat />
     </main>
   );
 }

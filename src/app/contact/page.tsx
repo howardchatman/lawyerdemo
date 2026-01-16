@@ -3,8 +3,11 @@
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import AIVAChat from '@/components/AIVAChat';
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, AlertCircle, Bot, PhoneCall } from 'lucide-react';
 import { submitContactForm } from '@/lib/supabase';
+
+const RETELL_PHONE = '713-999-2094';
 
 const offices = [
   {
@@ -255,6 +258,33 @@ export default function ContactPage() {
 
             {/* Contact Info */}
             <div>
+              {/* AI Voice Assistant Banner */}
+              <div className="bg-gradient-to-r from-[#c9a961] to-[#d4b76a] p-6 mb-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center">
+                    <Bot size={28} className="text-[#c9a961]" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-black">Talk to AIVA</h3>
+                    <p className="text-black/70 text-sm">Our AI Voice Assistant</p>
+                  </div>
+                </div>
+                <p className="text-black/80 text-sm mb-4">
+                  Speak directly with our AI assistant for immediate help with scheduling,
+                  case inquiries, and connecting with an attorney.
+                </p>
+                <a
+                  href={`tel:${RETELL_PHONE}`}
+                  className="flex items-center justify-center gap-3 bg-black text-white py-4 px-6 font-bold text-lg hover:bg-white hover:text-black transition-colors w-full"
+                >
+                  <PhoneCall size={24} />
+                  <span>{RETELL_PHONE}</span>
+                </a>
+                <p className="text-black/60 text-xs text-center mt-2">
+                  Available 24/7 • Powered by Retell AI
+                </p>
+              </div>
+
               {/* Quick Contact */}
               <div className="bg-black p-8 mb-8">
                 <h3 className="text-2xl font-bold text-white mb-6">
@@ -266,9 +296,9 @@ export default function ContactPage() {
                       <Phone size={24} className="text-[#c9a961]" />
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">Call Us 24/7</p>
-                      <a href="tel:1-800-CHATMAN" className="text-2xl font-bold text-white hover:text-[#c9a961] transition-colors">
-                        1-800-CHATMAN
+                      <p className="text-gray-400 text-sm">AI Voice Line</p>
+                      <a href={`tel:${RETELL_PHONE}`} className="text-2xl font-bold text-white hover:text-[#c9a961] transition-colors">
+                        {RETELL_PHONE}
                       </a>
                     </div>
                   </div>
@@ -343,6 +373,9 @@ export default function ContactPage() {
       </section>
 
       <Footer />
+
+      {/* AIVA Chat Widget */}
+      <AIVAChat />
     </main>
   );
 }
