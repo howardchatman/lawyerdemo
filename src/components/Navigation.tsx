@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Phone, Scale } from 'lucide-react';
+import { Menu, X, Phone, Scale, ChevronDown } from 'lucide-react';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [demoDropdownOpen, setDemoDropdownOpen] = useState(false);
+  const [mobileDemoOpen, setMobileDemoOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +25,11 @@ export default function Navigation() {
     { href: '#about', label: 'About' },
     { href: '#results', label: 'Results' },
     { href: '/contact', label: 'Contact' },
+  ];
+
+  const demoLinks = [
+    { href: '/admin', label: 'Admin Dashboard' },
+    { href: '/portal', label: 'User Dashboard' },
   ];
 
   return (
@@ -84,6 +91,34 @@ export default function Navigation() {
                   {link.label}
                 </Link>
               ))}
+
+              {/* Demo Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setDemoDropdownOpen(true)}
+                onMouseLeave={() => setDemoDropdownOpen(false)}
+              >
+                <button
+                  className="flex items-center gap-1 text-black hover:text-[#c9a961] transition-colors font-bold text-sm tracking-wide uppercase"
+                >
+                  Demo
+                  <ChevronDown size={16} className={`transition-transform ${demoDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {demoDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 shadow-xl rounded overflow-hidden z-50">
+                    {demoLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="block px-4 py-3 text-black hover:bg-[#c9a961] hover:text-white transition-colors font-semibold text-sm"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* CTA Button */}
@@ -124,6 +159,35 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
+
+            {/* Mobile Demo Dropdown */}
+            <div className="border-b border-gray-100">
+              <button
+                onClick={() => setMobileDemoOpen(!mobileDemoOpen)}
+                className="flex items-center justify-between w-full text-black hover:text-[#c9a961] transition-colors font-bold py-2"
+              >
+                Demo
+                <ChevronDown size={18} className={`transition-transform ${mobileDemoOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileDemoOpen && (
+                <div className="pl-4 pb-2 space-y-2">
+                  {demoLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => {
+                        setIsOpen(false);
+                        setMobileDemoOpen(false);
+                      }}
+                      className="block text-gray-700 hover:text-[#c9a961] transition-colors font-semibold py-2"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
