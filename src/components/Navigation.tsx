@@ -79,7 +79,7 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-black hover:text-[#c9a961] transition-colors font-medium text-sm tracking-wide uppercase"
+                  className="text-black hover:text-[#c9a961] transition-colors font-bold text-sm tracking-wide uppercase"
                 >
                   {link.label}
                 </Link>
@@ -119,7 +119,7 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block text-black hover:text-[#c9a961] transition-colors font-medium py-2 border-b border-gray-100"
+                className="block text-black hover:text-[#c9a961] transition-colors font-bold py-2 border-b border-gray-100"
               >
                 {link.label}
               </Link>
