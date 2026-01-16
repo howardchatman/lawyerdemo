@@ -16,6 +16,7 @@ import {
   X,
   Bell,
   ChevronDown,
+  Gift,
 } from 'lucide-react';
 import { createClientComponentClient } from '@/lib/supabase';
 
@@ -25,6 +26,7 @@ const sidebarLinks = [
   { href: '/portal/documents', label: 'Documents', icon: FileText },
   { href: '/portal/messages', label: 'Messages', icon: MessageSquare },
   { href: '/portal/appointments', label: 'Appointments', icon: Calendar },
+  { href: '/portal/share', label: 'Refer a Friend', icon: Gift },
   { href: '/portal/profile', label: 'Profile', icon: User },
 ];
 

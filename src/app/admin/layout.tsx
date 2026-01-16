@@ -18,6 +18,7 @@ import {
   ChevronDown,
   Mail,
   BarChart3,
+  Share2,
 } from 'lucide-react';
 import { createClientComponentClient } from '@/lib/supabase';
 
@@ -26,6 +27,7 @@ const sidebarLinks = [
   { href: '/admin/clients', label: 'Clients', icon: Users },
   { href: '/admin/cases', label: 'Cases', icon: Briefcase },
   { href: '/admin/leads', label: 'Leads', icon: Mail },
+  { href: '/admin/share', label: 'Share & Referrals', icon: Share2 },
   { href: '/admin/documents', label: 'Documents', icon: FileText },
   { href: '/admin/appointments', label: 'Appointments', icon: Calendar },
   { href: '/admin/analytics', label: 'Analytics', icon: BarChart3 },
